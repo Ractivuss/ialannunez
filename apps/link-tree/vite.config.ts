@@ -12,7 +12,7 @@ declare module '@remix-run/node' {
 export default defineConfig({
   root: __dirname,
   build: {
-    outDir: 'dist',
+    outDir: 'build',
   },
   server: {
     port: 3000,

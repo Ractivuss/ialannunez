@@ -2,7 +2,11 @@
   "name": "@ialannunez/link-tree",
   "private": true,
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "start": "remix-serve build/server/index.js"
+  },
   "sideEffects": false,
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
