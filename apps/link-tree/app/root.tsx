@@ -10,7 +10,7 @@ import stylesheet from './styles.css?url';
 
 export const meta: MetaFunction = () => [
   {
-    title: 'Link Tree - Alan Nunez',
+    title: 'Alan Núñez | Link Tree',
   },
 ];
 
