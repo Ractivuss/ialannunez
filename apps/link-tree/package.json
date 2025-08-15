@@ -5,7 +5,6 @@
   "scripts": {},
   "sideEffects": false,
   "dependencies": {
-    "@cloudflare/kv-asset-handler": "^0.4.0",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@remix-run/cloudflare": "^2.15.0",
