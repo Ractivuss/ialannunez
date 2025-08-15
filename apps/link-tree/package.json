@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev",
+    "build": "vite build",
+    "dev": "remix dev", 
     "start": "remix-serve build/index.js",
-    "preview": "remix-serve build/index.js"
+    "preview": "remix-serve build/index.js",
+    "install:legacy": "npm install --legacy-peer-deps"
   },
   "sideEffects": false,
   "dependencies": {
