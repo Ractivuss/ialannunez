@@ -1,0 +1,10 @@
+{
+  "name": "@ialannunez/link-tree-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@ialannunez/link-tree"
+    ]
+  }
+}
