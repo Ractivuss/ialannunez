@@ -10,11 +10,10 @@ const handleRequest = createRequestHandler(build, process.env.NODE_ENV);
 export default {
   async fetch(request, env, ctx) {
     try {
-      // Try to serve static assets first
       const url = new URL(request.url);
       
-      // If it's a static asset (has file extension), try to serve from KV
-      if (url.pathname.includes('.') && !url.pathname.endsWith('.html')) {
+      // Try to serve static assets first if KV is available
+      if (url.pathname.includes('.') && !url.pathname.endsWith('.html') && env.__STATIC_CONTENT) {
         try {
           return await getAssetFromKV(
             {
@@ -26,17 +25,19 @@ export default {
               ASSET_MANIFEST: env.__STATIC_CONTENT_MANIFEST,
             }
           );
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
-          // If asset not found, continue to Remix handler
+          console.log('Asset not found in KV, falling back to Remix handler:', e.message);
         }
       }
 
       // Handle Remix routes
       return await handleRequest(request, { env });
     } catch (error) {
-      console.error(error);
-      return new Response('Internal Server Error', { status: 500 });
+      console.error('Worker error:', error);
+      return new Response(`Internal Server Error: ${error.message}`, { 
+        status: 500,
+        headers: { 'Content-Type': 'text/plain' }
+      });
     }
   },
 };
