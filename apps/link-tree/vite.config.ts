@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import path from 'path';
 
-declare module '@remix-run/node' {
+declare module '@remix-run/cloudflare' {
   interface Future {
     v3_singleFetch: true;
   }
