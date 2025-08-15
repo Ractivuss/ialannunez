@@ -35,7 +35,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "remix-serve build",
+        "command": "vite start",
         "cwd": "apps/link-tree"
       },
       "dependsOn": ["build"]
