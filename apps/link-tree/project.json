@@ -8,7 +8,7 @@
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "vite dev",
+        "command": "remix vite:dev",
         "cwd": "apps/link-tree"
       }
     },
@@ -35,10 +35,9 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "vite start",
+        "command": "remix-serve build/server/index.js",
         "cwd": "apps/link-tree"
-      },
-      "dependsOn": ["build"]
+      }
     },
     "deploy": {
       "executor": "nx:run-commands",
