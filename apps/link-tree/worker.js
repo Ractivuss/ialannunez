@@ -26,6 +26,7 @@ export default {
               ASSET_MANIFEST: env.__STATIC_CONTENT_MANIFEST,
             }
           );
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
           // If asset not found, continue to Remix handler
         }
