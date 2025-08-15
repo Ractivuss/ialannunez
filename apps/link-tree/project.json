@@ -1,0 +1,53 @@
+{
+  "name": "@ialannunez/link-tree",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/link-tree",
+  "projectType": "application",
+  "tags": ["type:app", "framework:remix"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vite dev",
+        "cwd": "apps/link-tree"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "remix build",
+        "cwd": "apps/link-tree"
+      },
+      "outputs": ["{projectRoot}/build"]
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "remix-serve build",
+        "cwd": "apps/link-tree"
+      },
+      "dependsOn": ["build"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "apps/link-tree"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/link-tree/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/link-tree/jest.config.ts"
+      }
+    }
+  }
+}
