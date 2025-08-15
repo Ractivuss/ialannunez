@@ -13,6 +13,14 @@ export default defineConfig({
   root: __dirname,
   build: {
     outDir: 'build',
+    target: 'esnext',
+    minify: false,
+  },
+  ssr: {
+    resolve: {
+      conditions: ["workerd", "worker", "browser"],
+      externalConditions: ["workerd", "worker"],
+    },
   },
   server: {
     port: 3000,
