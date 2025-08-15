@@ -7,5 +7,5 @@ compatibility_flags = ["nodejs_compat"]
 bucket = "build/client"
 
 [[routes]]
-pattern = "linktree.ialannunez.mx/*"
+pattern = "linktree.ialannunez.mx"
 zone_name = "ialannunez.mx"
