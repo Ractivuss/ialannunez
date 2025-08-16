@@ -1,14 +1,5 @@
 import { z } from 'zod';
 
-// Zod schema for IconType
-export const IconTypeSchema = z.enum([
-  'github',
-  'linkedin',
-  'twitter',
-  'globe',
-]);
-export type IconType = z.infer<typeof IconTypeSchema>;
-
 // Zod schema for FontType
 export const FontTypeSchema = z.enum(['font-sans', 'font-mono', 'font-serif']);
 export type FontType = z.infer<typeof FontTypeSchema>;
@@ -50,33 +41,20 @@ export const BorderRadiusTypeSchema = z.enum([
 ]);
 export type BorderRadiusType = z.infer<typeof BorderRadiusTypeSchema>;
 
-// Zod schema for profile data validation
-export const ProfileSchema = z.object({
-  name: z.string(),
-  isVerified: z.boolean().optional(),
-  bio: z.string(),
-  themeSettings: z.object({
-    font: FontTypeSchema,
-    mode: ModeTypeSchema,
-    colorTheme: ColorThemeTypeSchema,
-    pattern: PatternTypeSchema,
-    borderRadius: BorderRadiusTypeSchema,
-    gradient: z.string(),
-    effects: z.object({
-      shadow: z.boolean(),
-      glassmorphism: z.boolean(),
-      cardOpacity: z.number(),
-      animationSpeed: z.number(),
-    }),
+// Theme Settings Schema - extracted from Profile schema
+export const ThemeSettingsSchema = z.object({
+  font: FontTypeSchema,
+  mode: ModeTypeSchema,
+  colorTheme: ColorThemeTypeSchema,
+  pattern: PatternTypeSchema,
+  borderRadius: BorderRadiusTypeSchema,
+  gradient: z.string(),
+  effects: z.object({
+    shadow: z.boolean(),
+    glassmorphism: z.boolean(),
+    cardOpacity: z.number(),
+    animationSpeed: z.number(),
   }),
-  links: z.array(
-    z.object({
-      id: z.string(),
-      label: z.string(),
-      url: z.string().url(),
-      icon: IconTypeSchema,
-    })
-  ),
 });
 
-export type Profile = z.infer<typeof ProfileSchema>;
+export type ThemeSettings = z.infer<typeof ThemeSettingsSchema>;

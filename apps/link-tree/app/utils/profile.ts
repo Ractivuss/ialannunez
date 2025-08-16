@@ -1,5 +1,5 @@
 import { profileData } from '@/lib/profile';
-import { Profile, ProfileSchema } from '@/types/profile';
+import { Profile, ProfileSchema } from '@/types/profile.types';
 
 const cachedProfile = new Map<'profile', Profile>();
 

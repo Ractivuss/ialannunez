@@ -1,7 +1,7 @@
 import { cn } from '@lib/utils';
 import type React from 'react';
 import { useMemo } from 'react';
-import { useTheme } from '@/hooks/useTheme';
+import { useTheme } from '@/providers/ThemeProvider';
 import { hslToRgb, hexToRgb } from './utils';
 import {
   LinkIcon,
@@ -10,7 +10,8 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@atoms/icons';
-import { IconType } from '@/types/profile';
+import { IconType } from '@/types/profile.types';
+import { getThemeColors } from '@/utils/theme';
 
 interface LinkItemProps {
   label: string;
@@ -31,7 +32,7 @@ const getLinkIcon = (iconType: IconType) => {
 };
 
 export const LinkItem = ({ label, url, icon }: LinkItemProps) => {
-  const { themeSettings, getThemeColors } = useTheme();
+  const { themeSettings } = useTheme();
   const isDarkTheme = themeSettings.mode === 'dark';
 
   // Memoize theme colors to prevent unnecessary recalculations
