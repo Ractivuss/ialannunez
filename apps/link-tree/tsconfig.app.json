@@ -26,6 +26,8 @@
     "app/**/*.tsx",
     "app/**/*.js",
     "app/**/*.jsx",
+    "app/providers/**/*.ts",
+    "app/providers/**/*.tsx",
     "**/.server/**/*.ts",
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
