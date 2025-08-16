@@ -9,6 +9,8 @@ import { startTransition, StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 
 startTransition(() => {
+  // bringing the app to life
+  // downloads React bundle in the background and scans the DOM to make it interactive
   hydrateRoot(
     document,
     <StrictMode>
