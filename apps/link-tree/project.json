@@ -55,18 +55,18 @@
       },
       "dependsOn": ["build:cloudflare"]
     },
-    "upload:version": {
+    "upload:version:dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "wrangler versions upload",
+        "command": "wrangler versions upload --env development",
         "cwd": "apps/link-tree"
       },
       "dependsOn": ["build:cloudflare"]
     },
-    "deploy:version": {
+    "deploy:version:dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "wrangler versions deploy",
+        "command": "wrangler versions deploy --env development --yes",
         "cwd": "apps/link-tree"
       },
       "dependsOn": ["build:cloudflare"]
