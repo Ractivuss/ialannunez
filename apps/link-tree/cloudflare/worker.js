@@ -1,5 +1,5 @@
 // Import the Remix build
-import * as build from './build/server/index.js';
+import * as build from '../build/server/index.js';
 import { createRequestHandler } from '@remix-run/cloudflare';
 
 // Create the request handler
