@@ -1,9 +1,15 @@
+[env.production]
 name = "linktree"
 main = "cloudflare/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
-[site]
+[env.production.vars]
+NODE_ENV = "production"
+
+# Use ASSETS binding instead of [site]
+[[env.production.assets]]
+binding = "ASSETS"
 bucket = "build/client"
 
 [[routes]]

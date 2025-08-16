@@ -9,7 +9,23 @@ const handleRequest = createRequestHandler(build, process.env.NODE_ENV);
 export default {
   async fetch(request, env) {
     try {
-      // Handle Remix routes first
+      const url = new URL(request.url);
+      
+      // Handle static assets first (CSS, JS, images, etc.)
+      if (url.pathname.startsWith('/assets/') || 
+          url.pathname.endsWith('.css') || 
+          url.pathname.endsWith('.js') || 
+          url.pathname.endsWith('.ico') || 
+          url.pathname.endsWith('.webp') ||
+          url.pathname.endsWith('.png') ||
+          url.pathname.endsWith('.jpg') ||
+          url.pathname.endsWith('.svg')) {
+        
+        // Serve static assets from the ASSETS binding
+        return env.ASSETS.fetch(request);
+      }
+      
+      // Handle Remix routes
       return await handleRequest(request, { env });
     } catch (error) {
       console.error('Worker error:', error.message, error.stack);
