@@ -43,7 +43,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "wrangler serve",
+        "command": "remix-serve build/server/index.js",
         "cwd": "apps/link-tree"
       }
     },
