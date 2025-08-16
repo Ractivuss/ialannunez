@@ -4,8 +4,8 @@ import { VerifiedBadge } from '@atoms/verified-badge';
 import { cn } from '@lib/utils';
 import { getProfileData } from '@utils/profile';
 import { LinkItem } from '@molecules/LinkItem';
-import { IconType } from '@/types/profile';
-import { useTheme } from '@/hooks/useTheme';
+import { IconType } from '@/types/profile.types';
+import { useTheme } from '@/providers/ThemeProvider';
 
 export const ProfileCard = () => {
   const profile = getProfileData();

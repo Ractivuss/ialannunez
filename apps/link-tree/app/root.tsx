@@ -7,6 +7,8 @@ import {
 } from '@remix-run/react';
 import type { MetaFunction, LinksFunction } from '@remix-run/node';
 import stylesheet from './styles.css?url';
+import { ThemeProvider } from '@/providers/ThemeProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export const meta: MetaFunction = () => [
   {
@@ -36,6 +38,8 @@ export const links: LinksFunction = () => [
   },
 ];
 
+const queryClient = new QueryClient();
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -45,15 +49,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body 
+      <body
         className="font-sans"
-        style={{
-          '--font-sans': 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          '--font-mono': '"JetBrains Mono", "Fira Code", Consolas, monospace',
-          '--font-serif': '"Playfair Display", Georgia, serif'
-        } as React.CSSProperties}
+        style={
+          {
+            '--font-sans':
+              'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            '--font-mono': '"JetBrains Mono", "Fira Code", Consolas, monospace',
+            '--font-serif': '"Playfair Display", Georgia, serif',
+          } as React.CSSProperties
+        }
       >
-        {children}
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </QueryClientProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
