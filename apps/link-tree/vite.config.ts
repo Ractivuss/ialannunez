@@ -3,10 +3,19 @@ import { defineConfig } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import path from 'path';
 
+declare module '@remix-run/node' {
+  interface Future {
+    v3_singleFetch: true;
+  }
+}
+
 export default defineConfig({
   root: __dirname,
+  publicDir: 'public',
   build: {
     outDir: 'build',
+    target: 'esnext',
+    minify: false,
   },
   server: {
     port: 3000,

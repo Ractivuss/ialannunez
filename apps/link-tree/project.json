@@ -12,6 +12,14 @@
         "cwd": "apps/link-tree"
       }
     },
+    "dev:cloudflare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler dev --port 3000",
+        "cwd": "apps/link-tree"
+      },
+      "dependsOn": ["build"]
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
@@ -35,7 +43,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "remix-serve build/server/index.js",
+        "command": "wrangler serve",
         "cwd": "apps/link-tree"
       }
     },
