@@ -21,7 +21,7 @@ export const profileData: Profile = {
   themeSettings: {
     font: 'font-mono',
     pattern: 'pattern-none',
-    mode: 'light',
+    mode: 'dark',
     colorTheme: 'blue',
     gradient: 'none',
     borderRadius: 'rounded-none',
