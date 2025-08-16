@@ -1,0 +1,11 @@
+name = "linktree"
+main = "cloudflare/worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[site]
+bucket = "build/client"
+
+[[routes]]
+pattern = "linktree.ialannunez.mx/*"
+zone_name = "ialannunez.mx"

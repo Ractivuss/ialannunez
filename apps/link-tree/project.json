@@ -15,8 +15,20 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "remix build",
+        "command": "remix vite:build",
         "cwd": "apps/link-tree"
+      },
+      "outputs": ["{projectRoot}/build"]
+    },
+    "build:cloudflare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node cloudflare/build-cloudflare.js",
+          "remix vite:build"
+        ],
+        "cwd": "apps/link-tree",
+        "parallel": false
       },
       "outputs": ["{projectRoot}/build"]
     },
@@ -27,6 +39,14 @@
         "cwd": "apps/link-tree"
       },
       "dependsOn": ["build"]
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler deploy",
+        "cwd": "apps/link-tree"
+      },
+      "dependsOn": ["build:cloudflare"]
     },
     "typecheck": {
       "executor": "nx:run-commands",
