@@ -3,8 +3,9 @@ main = "cloudflare/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
-# Use site bucket for static files (simpler approach)
-[site]
+# Use ASSETS binding for static files
+[[assets]]
+binding = "ASSETS"
 bucket = "build/client"
 
 [[routes]]
