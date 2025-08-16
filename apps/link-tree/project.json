@@ -12,14 +12,6 @@
         "cwd": "apps/link-tree"
       }
     },
-    "dev:cloudflare": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "wrangler dev --port 3000",
-        "cwd": "apps/link-tree"
-      },
-      "dependsOn": ["build"]
-    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
@@ -50,7 +42,7 @@
     "deploy": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "wrangler deploy --",
+        "command": "wrangler deploy",
         "cwd": "apps/link-tree"
       },
       "dependsOn": ["build:cloudflare"]
