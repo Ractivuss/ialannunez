@@ -6,7 +6,7 @@ compatibility_flags = ["nodejs_compat"]
 # Use ASSETS binding for static files
 [[assets]]
 binding = "ASSETS"
-bucket = "build/client"
+directory = "build/client"
 
 [[routes]]
 pattern = "linktree.ialannunez.mx"
