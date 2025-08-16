@@ -55,6 +55,14 @@
       },
       "dependsOn": ["build:cloudflare"]
     },
+    "deploy:version": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler versions upload",
+        "cwd": "apps/link-tree"
+      },
+      "dependsOn": ["build:cloudflare"]
+    },
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
