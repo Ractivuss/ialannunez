@@ -50,7 +50,7 @@
     "deploy": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "wrangler deploy",
+        "command": "wrangler deploy --",
         "cwd": "apps/link-tree"
       },
       "dependsOn": ["build:cloudflare"]
@@ -58,7 +58,7 @@
     "deploy:version": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "wrangler versions upload",
+        "command": "wrangler versions upload --",
         "cwd": "apps/link-tree"
       },
       "dependsOn": ["build:cloudflare"]

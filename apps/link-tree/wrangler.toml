@@ -11,3 +11,9 @@ directory = "build/client"
 [[routes]]
 pattern = "linktree.ialannunez.mx"
 zone_name = "ialannunez.mx"
+
+[env.development]
+name = "linktree-development"
+[[env.development.routes]]
+pattern = "linktree-dev.ialannunez.mx"
+zone_name = "ialannunez.mx"
