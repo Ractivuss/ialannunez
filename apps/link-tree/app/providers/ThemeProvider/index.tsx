@@ -21,7 +21,7 @@ import {
   setColorTheme,
   setPageBackground,
 } from '@/services/theme';
-import { getThemeColors } from '@/utils/theme';
+import { getThemeColors } from '@/utils/theme.utils';
 
 // Theme Context Interface
 interface ThemeContextType {
@@ -82,7 +82,6 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     // Don't apply theme until we've either loaded from storage or confirmed no storage data exists
     if (themeSetup || isLoading || !themeSettingsFromStorage) return;
 
-    console.log('Initializing theme settings', themeSettingsFromStorage);
     setThemeSetup(true);
 
     // Apply initial theme settings including background color

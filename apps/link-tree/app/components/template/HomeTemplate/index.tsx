@@ -1,4 +1,4 @@
-import { cn } from '@lib/utils';
+import { cn } from '@/utils/tailwind.utils';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useState } from 'react';
 import { Header } from '@/components/molecules/Header';

@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@atoms/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@atoms/tabs';
-import { cn } from '@lib/utils';
+import { cn } from '@/utils/tailwind.utils';
 import { useState } from 'react';
 import { useTheme } from '@/providers/ThemeProvider';
 import { ThemeForm } from '../ThemeForm';

@@ -13,7 +13,7 @@ import {
   getBackgroundColors,
   getBorderRadiusValue,
   getThemeColors,
-} from '@/utils/theme';
+} from '@/utils/theme.utils';
 
 export const defaultTheme: ThemeSettings = {
   font: 'font-mono',

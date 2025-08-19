@@ -1,8 +1,8 @@
 import { Label } from '@atoms/label';
 import { Switch } from '@atoms/switch';
 import { RadioGroup, RadioGroupItem } from '@atoms/radio-group';
-import { cn } from '@lib/utils';
-import { fontOptions } from '@/utils/theme';
+import { cn } from '@/utils/tailwind.utils';
+import { fontOptions } from '@/utils/theme.utils';
 import { useTheme } from '@/providers/ThemeProvider';
 import { BorderRadiusType, FontType } from '@/types/theme.types';
 
