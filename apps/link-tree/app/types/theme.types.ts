@@ -14,8 +14,6 @@ export const PatternTypeSchema = z.enum([
   'pattern-dots',
   'pattern-grid',
   'pattern-stripes',
-  'pattern-waves',
-  'pattern-hexagons',
 ]);
 export type PatternType = z.infer<typeof PatternTypeSchema>;
 
@@ -41,6 +39,18 @@ export const BorderRadiusTypeSchema = z.enum([
 ]);
 export type BorderRadiusType = z.infer<typeof BorderRadiusTypeSchema>;
 
+export const PageBackgroundSchema = z.enum([
+  'default',
+  'slate',
+  'pink',
+  'green',
+  'purple',
+  'orange',
+  'blue',
+  'yellow',
+]);
+export type PageBackgroundType = z.infer<typeof PageBackgroundSchema>;
+
 // Theme Settings Schema - extracted from Profile schema
 export const ThemeSettingsSchema = z.object({
   font: FontTypeSchema,
@@ -49,6 +59,7 @@ export const ThemeSettingsSchema = z.object({
   pattern: PatternTypeSchema,
   borderRadius: BorderRadiusTypeSchema,
   gradient: z.string(),
+  pageBackground: PageBackgroundSchema,
   effects: z.object({
     shadow: z.boolean(),
     glassmorphism: z.boolean(),

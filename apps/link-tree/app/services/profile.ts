@@ -1,6 +1,7 @@
-import { Profile } from '@/types/profile.types';
+import { useQuery } from '@tanstack/react-query';
+import { type Profile } from '@/types/profile.types';
 
-export const profileData: Profile = {
+const staticProfile: Profile = {
   name: 'Alan Nunez',
   isVerified: true,
   bio: "I'm a Senior Front-End Developer | Full-Stack Engineer | Code Architect with 7+ years of experience delivering scalable, high-performance web applications with React, Next.js, and TypeScript.",
@@ -18,18 +19,16 @@ export const profileData: Profile = {
       icon: 'linkedin',
     },
   ],
-  themeSettings: {
-    font: 'font-mono',
-    pattern: 'pattern-none',
-    mode: 'dark',
-    colorTheme: 'blue',
-    gradient: 'none',
-    borderRadius: 'rounded-none',
-    effects: {
-      shadow: true,
-      glassmorphism: false,
-      cardOpacity: 1,
-      animationSpeed: 100,
-    },
-  },
 };
+
+const getStaticProfile = (): Profile => staticProfile;
+
+export function useGetProfile() {
+  return useQuery({
+    queryKey: ['profile'],
+    queryFn: getStaticProfile,
+    initialData: staticProfile,
+    staleTime: Infinity, // Static data never changes
+    gcTime: Infinity, // Keep in cache indefinitely
+  });
+}

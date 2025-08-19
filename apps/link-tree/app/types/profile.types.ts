@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { ThemeSettingsSchema } from './theme.types';
 
 // Zod schema for IconType
 export const IconTypeSchema = z.enum([
@@ -15,7 +14,6 @@ export const ProfileSchema = z.object({
   name: z.string(),
   isVerified: z.boolean().optional(),
   bio: z.string(),
-  themeSettings: ThemeSettingsSchema,
   links: z.array(
     z.object({
       id: z.string(),
