@@ -25,7 +25,7 @@ export const HomeTemplate = () => {
     >
       <main
         className={cn(
-          'min-h-screen flex items-center justify-center p-4',
+          'min-h-screen flex items-start justify-center p-4 pt-[calc(50vh-400px)] md:pt-[calc(50vh-350px)]',
           patternClass
         )}
       >
