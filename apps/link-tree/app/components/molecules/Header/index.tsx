@@ -7,11 +7,11 @@ interface HeaderProps {
   onSaveChanges: () => void;
 }
 
-export function Header({
+export const Header = ({
   isEditMode,
   onToggleEditMode,
   onSaveChanges,
-}: HeaderProps) {
+}: HeaderProps) => {
   const handleClick = () => {
     // if in edit mode, save changes and toggle edit mode
     if (isEditMode) onSaveChanges();
@@ -34,4 +34,4 @@ export function Header({
       </Button>
     </div>
   );
-}
+};

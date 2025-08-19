@@ -10,7 +10,7 @@ import { ColorsTab } from './ColorsTab';
 import { BackgroundTab } from './BackgroundTab';
 import { defaultTheme, setMode } from '@/services/theme';
 
-export function ThemeForm() {
+export const ThemeForm = () => {
   const [activeSubTab, setActiveSubTab] = useState('colors');
   const { themeSettings, resetTheme, updateTheme } = useTheme();
 
@@ -99,4 +99,4 @@ export function ThemeForm() {
       </Tabs>
     </div>
   );
-}
+};
