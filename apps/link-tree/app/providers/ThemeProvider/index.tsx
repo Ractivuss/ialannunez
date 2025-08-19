@@ -4,16 +4,31 @@ import {
   ReactNode,
   useCallback,
   useMemo,
+  useEffect,
+  useState,
 } from 'react';
 import { type ThemeSettings } from '@/types/theme.types';
-import { useGetTheme, useUpdateTheme } from '@/services/theme';
-import { useSetupTheme } from './useSetupTheme';
+import {
+  setCardOpacity,
+  setAnimationSpeed,
+  setPattern,
+  setFont,
+  setMode,
+  useGetTheme,
+  useUpdateTheme,
+  setCardBorderRadius,
+  defaultTheme,
+  setColorTheme,
+  setPageBackground,
+} from '@/services/theme';
+import { getThemeColors } from '@/utils/theme';
 
 // Theme Context Interface
 interface ThemeContextType {
   themeSettings: ThemeSettings;
   updateTheme: (newSettings: Partial<ThemeSettings>) => void;
   resetTheme: () => void;
+  saveTheme: (newSettings: Partial<ThemeSettings>) => void;
   isHydrated: boolean;
 }
 
@@ -27,37 +42,89 @@ interface ThemeProviderProps {
 
 // Theme Provider Component
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const { data: themeSettings } = useGetTheme();
-  const { applyThemeSettings, isHydrated } = useSetupTheme();
+  const {
+    data: themeSettingsFromStorage,
+    isLoading,
+    isFetching,
+  } = useGetTheme();
+  const [themeSettings, setThemeSettings] =
+    useState<ThemeSettings>(defaultTheme);
   const { mutate: updateThemeStorage } = useUpdateTheme();
+  const [isHydrated, setIsHydrated] = useState(false);
+  const [themeSetup, setThemeSetup] = useState(false);
 
-    const updateTheme = useCallback(
+  // Update the applyThemeSettings function to correctly set HSL values
+  const applyThemeSettings = useCallback(
+    (settings: ThemeSettings) => {
+      // Apply default theme colors
+      setColorTheme(settings.colorTheme);
+      // Always apply page background (including default)
+      setPageBackground(settings.pageBackground);
+      // Apply mode
+      setMode(settings.mode);
+      // Apply font
+      setFont(settings.font);
+      // Apply pattern
+      setPattern(settings.pattern);
+      // Apply animation speed
+      setAnimationSpeed(settings.effects.animationSpeed);
+      // Apply card opacity
+      setCardOpacity(settings.effects.cardOpacity);
+      // Apply border radius
+      setCardBorderRadius(settings.borderRadius);
+    },
+    [getThemeColors]
+  );
+
+  useEffect(() => {
+    setIsHydrated(true);
+
+    // Don't apply theme until we've either loaded from storage or confirmed no storage data exists
+    if (themeSetup || isLoading || !themeSettingsFromStorage) return;
+
+    console.log('Initializing theme settings', themeSettingsFromStorage);
+    setThemeSetup(true);
+
+    // Apply initial theme settings including background color
+    applyThemeSettings(themeSettingsFromStorage);
+    setThemeSettings(themeSettingsFromStorage);
+  }, [
+    themeSettingsFromStorage,
+    applyThemeSettings,
+    isLoading,
+    isFetching,
+    themeSetup,
+  ]);
+
+  /** Updates the theme settings in the provider */
+  const updateTheme = useCallback(
+    (newSettings: Partial<ThemeSettings>) =>
+      setThemeSettings({ ...themeSettings, ...newSettings }),
+    [themeSettings]
+  );
+
+  /** Saves the theme settings to the storage */
+  const saveTheme = useCallback(
     (newSettings: Partial<ThemeSettings>) => {
-      // 1. Get current theme and merge with new settings
-      const currentTheme = themeSettings; // Get current theme from React Query
-      const updatedTheme = { ...currentTheme, ...newSettings };
-      
-      // 2. Apply theme changes visually (DOM manipulation)
-      applyThemeSettings(updatedTheme, updatedTheme.mode === 'dark');
-      
-      // 3. Store changes to localStorage and update cache
+      updateTheme(newSettings);
       updateThemeStorage(newSettings);
     },
-    [applyThemeSettings, updateThemeStorage]
+    [updateTheme, updateThemeStorage]
   );
 
   const resetTheme = useCallback(() => {
-    applyThemeSettings(themeSettings, themeSettings.mode === 'dark');
-  }, [themeSettings, applyThemeSettings]);
+    applyThemeSettings(defaultTheme);
+  }, [applyThemeSettings]);
 
   const contextValue = useMemo(
     () => ({
       themeSettings,
       updateTheme,
       resetTheme,
+      saveTheme,
       isHydrated,
     }),
-    [themeSettings, updateTheme, resetTheme, isHydrated]
+    [themeSettings, updateTheme, resetTheme, saveTheme, isHydrated]
   );
 
   return (
