@@ -1,0 +1,51 @@
+---
+alwaysApply: true
+---
+
+# Cursor AI Assistant Rules
+
+## Focus and Scope
+- Focus ONLY on the specific request made by the user
+- Do NOT attempt to fix unrelated linting errors, type issues, or code problems unless they directly prevent the requested feature from working
+- If encountering errors in existing code that are not related to the current task, acknowledge them but do not fix them
+- Only make changes that are directly necessary to fulfill the user's specific request
+
+## Code Quality Guidelines
+- When creating new utilities or functions, ensure they work correctly for their intended purpose
+- Test the new functionality in context if requested
+- Avoid refactoring existing code unless specifically asked to do so
+- Do not attempt to "improve" or "clean up" code that wasn't part of the original request
+
+## Error Handling
+- If existing code has errors that don't affect the new functionality, mention them but don't fix them
+- Only fix errors that would prevent the requested feature from working
+- Stop after 2-3 attempts to fix issues if they persist and are not directly related to the core request
+- Ask the user for guidance if blocked by unrelated issues
+
+## Communication
+- Clearly state what was accomplished related to the original request
+- Briefly mention any unrelated issues encountered without fixing them
+- Focus responses on demonstrating the requested functionality# Cursor AI Assistant Rules
+
+## Focus and Scope
+- Focus ONLY on the specific request made by the user
+- Do NOT attempt to fix unrelated linting errors, type issues, or code problems unless they directly prevent the requested feature from working
+- If encountering errors in existing code that are not related to the current task, acknowledge them but do not fix them
+- Only make changes that are directly necessary to fulfill the user's specific request
+
+## Code Quality Guidelines
+- When creating new utilities or functions, ensure they work correctly for their intended purpose
+- Test the new functionality in context if requested
+- Avoid refactoring existing code unless specifically asked to do so
+- Do not attempt to "improve" or "clean up" code that wasn't part of the original request
+
+## Error Handling
+- If existing code has errors that don't affect the new functionality, mention them but don't fix them
+- Only fix errors that would prevent the requested feature from working
+- Stop after 2-3 attempts to fix issues if they persist and are not directly related to the core request
+- Ask the user for guidance if blocked by unrelated issues
+
+## Communication
+- Clearly state what was accomplished related to the original request
+- Briefly mention any unrelated issues encountered without fixing them
+- Focus responses on demonstrating the requested functionality
