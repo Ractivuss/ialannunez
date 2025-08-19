@@ -25,7 +25,7 @@ export const EditThemeCard = () => {
           onValueChange={setActiveTab}
           className={cn('w-full', themeSettings.font)}
         >
-          <TabsList className="grid w-full grid-cols-3 mb-4">
+          <TabsList className="grid w-full grid-cols-1 mb-4">
             <TabsTrigger value="theme">Theme</TabsTrigger>
           </TabsList>
 
