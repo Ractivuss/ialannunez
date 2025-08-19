@@ -12,7 +12,7 @@ import { renderToPipeableStream } from 'react-dom/server';
 
 const ABORT_DELAY = 5_000;
 
-export const handleRequest = (
+export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
@@ -21,7 +21,7 @@ export const handleRequest = (
   // free to delete this parameter in your app if you're not using it!
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   loadContext: AppLoadContext
-) => {
+) {
   return isbot(request.headers.get('user-agent') || '')
     ? handleBotRequest(
         request,
@@ -35,14 +35,14 @@ export const handleRequest = (
         responseHeaders,
         remixContext
       );
-};
+}
 
-const handleBotRequest = (
+function handleBotRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext
-) => {
+) {
   return new Promise((resolve, reject) => {
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
@@ -85,14 +85,14 @@ const handleBotRequest = (
 
     setTimeout(abort, ABORT_DELAY);
   });
-};
+}
 
-const handleBrowserRequest = (
+function handleBrowserRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext
-) => {
+) {
   return new Promise((resolve, reject) => {
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
@@ -135,4 +135,4 @@ const handleBrowserRequest = (
 
     setTimeout(abort, ABORT_DELAY);
   });
-};
+}
