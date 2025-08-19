@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { timeoutCallback } from '@/utils/timeout';
 
 interface CardFlipProps {
   frontContent: ReactNode;
@@ -14,7 +13,6 @@ export function CardFlip({
   backContent,
   isFlipped,
 }: CardFlipProps) {
-  const [isFlipping, setIsFlipping] = useState(false);
   const [cardHeight, setCardHeight] = useState<number | null>(null);
   const frontCardRef = useRef<HTMLDivElement>(null);
   const backCardRef = useRef<HTMLDivElement>(null);
@@ -34,6 +32,7 @@ export function CardFlip({
       // When not flipped, use the height of the front card
       if (frontCardRef.current) {
         const frontContentHeight = frontCardRef.current.scrollHeight;
+        console.log('Front content height:', frontContentHeight);
         setCardHeight(frontContentHeight);
       }
     };
@@ -47,7 +46,6 @@ export function CardFlip({
     });
 
     if (frontCardRef.current) resizeObserver.observe(frontCardRef.current);
-
     if (backCardRef.current) resizeObserver.observe(backCardRef.current);
 
     return () => {
@@ -55,21 +53,11 @@ export function CardFlip({
     };
   }, [isFlipped]);
 
-  // Reset the flipping state after the animation completes
-  useEffect(() => {
-    if (isFlipping) {
-      timeoutCallback(() => {
-        setIsFlipping(false);
-      }, 400); // Full transition time
-    }
-  }, [isFlipping]);
-
   return (
     <div className="perspective">
       <div
         className={cn(
           'card-flip-container relative transition-transform duration-400 transform-style-3d',
-          isFlipping && 'is-flipping',
           isFlipped ? 'flipped' : ''
         )}
         style={{ height: cardHeight ? `${cardHeight}px` : 'auto' }}
@@ -93,7 +81,7 @@ export function CardFlip({
             isFlipped ? 'opacity-100' : 'opacity-0 pointer-events-none'
           )}
         >
-          {backContent}
+          {isFlipped ? backContent : null}
         </div>
       </div>
     </div>
