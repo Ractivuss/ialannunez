@@ -25,8 +25,9 @@ export const HomeTemplate = () => {
     >
       <main
         className={cn(
-          'min-h-screen flex items-start justify-center p-4 pt-[calc(50vh-400px)] md:pt-[calc(50vh-350px)]',
-          patternClass
+          'min-h-screen flex items-start justify-center p-4 pt-[calc(50vh-350px)] md:pt-[calc(50vh-300px)]',
+          patternClass,
+          isEditMode && 'md:pt-[calc(50vh-400px)]'
         )}
       >
         <div className="w-full max-w-md flex flex-col items-center">
