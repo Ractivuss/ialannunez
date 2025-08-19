@@ -1,4 +1,4 @@
-import { cn } from '@lib/utils';
+import { cn } from '@/utils/tailwind.utils';
 import type React from 'react';
 import { useMemo } from 'react';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -11,7 +11,7 @@ import {
   TwitterIcon,
 } from '@atoms/icons';
 import { IconType } from '@/types/profile.types';
-import { getThemeColors } from '@/utils/theme';
+import { getThemeColors } from '@/utils/theme.utils';
 
 interface LinkItemProps {
   label: string;

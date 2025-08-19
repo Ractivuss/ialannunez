@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@atoms/avatar';
 import { Card, CardContent } from '@atoms/card';
 import { VerifiedBadge } from '@atoms/verified-badge';
-import { cn } from '@lib/utils';
+import { cn } from '@/utils/tailwind.utils';
 import { LinkItem } from '@molecules/LinkItem';
 import { IconType } from '@/types/profile.types';
 import { useTheme } from '@/providers/ThemeProvider';

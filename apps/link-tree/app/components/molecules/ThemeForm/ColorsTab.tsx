@@ -1,7 +1,7 @@
 import { Label } from '@atoms/label';
 import { RadioGroup, RadioGroupItem } from '@atoms/radio-group';
-import { cn } from '@lib/utils';
-import { colorThemes, getThemeColorHsl } from '@/utils/theme';
+import { cn } from '@/utils/tailwind.utils';
+import { colorThemes, getThemeColorHsl } from '@/utils/theme.utils';
 import { ColorThemeType } from '@/types/theme.types';
 import { useTheme } from '@/providers/ThemeProvider';
 import { setColorTheme, setMode } from '@/services/theme';

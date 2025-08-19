@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/tailwind.utils';
 
 interface CardFlipProps {
   frontContent: ReactNode;
@@ -32,7 +32,6 @@ export const CardFlip = ({
       // When not flipped, use the height of the front card
       if (frontCardRef.current) {
         const frontContentHeight = frontCardRef.current.scrollHeight;
-        console.log('Front content height:', frontContentHeight);
         setCardHeight(frontContentHeight);
       }
     };
