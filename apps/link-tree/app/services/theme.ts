@@ -19,8 +19,8 @@ export const defaultTheme: ThemeSettings = {
   font: 'font-mono',
   mode: 'light',
   colorTheme: 'blue',
-  pattern: 'pattern-dots',
-  borderRadius: 'rounded-none',
+  pattern: 'pattern-none',
+  borderRadius: 'rounded-sm',
   gradient: 'none',
   pageBackground: 'default',
   effects: {
