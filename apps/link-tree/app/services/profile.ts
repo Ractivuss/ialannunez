@@ -23,7 +23,7 @@ const staticProfile: Profile = {
 
 const getStaticProfile = (): Profile => staticProfile;
 
-export function useGetProfile() {
+export const useGetProfile = () => {
   return useQuery({
     queryKey: ['profile'],
     queryFn: getStaticProfile,
@@ -31,4 +31,4 @@ export function useGetProfile() {
     staleTime: Infinity, // Static data never changes
     gcTime: Infinity, // Keep in cache indefinitely
   });
-}
+};

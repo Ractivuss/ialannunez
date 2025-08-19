@@ -8,11 +8,11 @@ interface CardFlipProps {
   onFlip?: () => void;
 }
 
-export function CardFlip({
+export const CardFlip = ({
   frontContent,
   backContent,
   isFlipped,
-}: CardFlipProps) {
+}: CardFlipProps) => {
   const [cardHeight, setCardHeight] = useState<number | null>(null);
   const frontCardRef = useRef<HTMLDivElement>(null);
   const backCardRef = useRef<HTMLDivElement>(null);
@@ -86,4 +86,4 @@ export function CardFlip({
       </div>
     </div>
   );
-}
+};

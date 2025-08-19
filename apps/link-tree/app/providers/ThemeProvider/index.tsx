@@ -41,7 +41,7 @@ interface ThemeProviderProps {
 }
 
 // Theme Provider Component
-export function ThemeProvider({ children }: ThemeProviderProps) {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const {
     data: themeSettingsFromStorage,
     isLoading,
@@ -132,10 +132,10 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       {children}
     </ThemeContext.Provider>
   );
-}
+};
 
 // Custom hook to use Theme Context with validation
-export function useTheme(): ThemeContextType {
+export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
 
   if (context === undefined) {
@@ -145,4 +145,4 @@ export function useTheme(): ThemeContextType {
   }
 
   return context;
-}
+};

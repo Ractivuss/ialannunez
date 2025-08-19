@@ -42,7 +42,7 @@ const getThemeFromStorage = (): ThemeSettings => {
   }
 };
 
-export function useGetTheme() {
+export const useGetTheme = () => {
   return useQuery({
     queryKey: ['theme'],
     queryFn: getThemeFromStorage,
@@ -51,7 +51,7 @@ export function useGetTheme() {
     gcTime: Infinity, // Keep in cache indefinitely
     enabled: typeof window !== 'undefined', // Only run in browser
   });
-}
+};
 
 const updateThemeInStorage = async (
   newSettings: Partial<ThemeSettings>
@@ -77,7 +77,7 @@ const updateThemeInStorage = async (
   }
 };
 
-export function useUpdateTheme() {
+export const useUpdateTheme = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -87,7 +87,7 @@ export function useUpdateTheme() {
       queryClient.setQueryData(['theme'], updatedTheme);
     },
   });
-}
+};
 
 export const setAnimationSpeed = (value: number) => {
   document.documentElement.style.setProperty('--animation-speed', `${value}ms`);
