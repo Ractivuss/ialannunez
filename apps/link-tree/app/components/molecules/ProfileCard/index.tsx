@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@atoms/avatar';
 import { Card, CardContent } from '@atoms/card';
 import { VerifiedBadge } from '@atoms/verified-badge';
 import { cn } from '@/utils/tailwind.utils';
@@ -6,6 +5,7 @@ import { LinkItem } from '@molecules/LinkItem';
 import { IconType } from '@/types/profile.types';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useGetProfile } from '@/services/profile';
+import { AvatarFlip } from '@/components/atoms/avatar-flip';
 
 export const ProfileCard = () => {
   const { data: profile } = useGetProfile();
@@ -29,10 +29,11 @@ export const ProfileCard = () => {
             themeSettings.font
           )}
         >
-          <Avatar className="h-24 w-24">
-            <AvatarImage src={'/images/me_tiny.webp'} alt={profile.name} />
-            <AvatarFallback>{profile.name.charAt(0)}</AvatarFallback>
-          </Avatar>
+          <AvatarFlip
+            frontAvatarSrc={'/images/me_professional.webp'}
+            backAvatarSrc={'/images/me_tiny.webp'}
+            avatarFallback={profile.name.charAt(0)}
+          />
           <div className="text-center">
             <div className="flex items-center justify-center gap-1.5">
               <h2 className="text-xl font-bold">{profile.name}</h2>
