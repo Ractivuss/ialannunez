@@ -25,7 +25,10 @@ export const AvatarFlip = ({
   };
 
   return (
-    <div className="perspective w-36 h-36 hover:cursor-pointer" onClick={handleClick}>
+    <div
+      className="perspective w-28 h-28 hover:cursor-pointer"
+      onClick={handleClick}
+    >
       <div
         className={cn(
           'card-flip-container relative transition-transform duration-400 transform-style-3d',
