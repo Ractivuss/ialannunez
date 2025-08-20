@@ -16,15 +16,13 @@ export const AvatarFlip = ({
 }: AvatarFlipProps) => {
   const [isFlipped, setIsFlipped] = React.useState(false);
 
-  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleStart = () => {
     if (isFlipped) return; // Prevent flipping if animation is already in progress
-    e.preventDefault(); // Prevent default touch behaviors
     setIsFlipped(true);
   };
 
-  const handleEnd = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleEnd = () => {
     if (!isFlipped) return; // Prevent flipping if animation is already in progress
-    e.preventDefault();
     setIsFlipped(false);
   };
 
@@ -35,15 +33,26 @@ export const AvatarFlip = ({
     }
   };
 
+  const handleContextMenu = (e: React.MouseEvent) => {
+    // Prevent context menu (right-click menu on desktop, long-press menu on mobile)
+    e.preventDefault();
+  };
+
   return (
     <div
-      className="perspective w-28 h-28 hover:cursor-pointer"
+      className="perspective w-28 h-28 hover:cursor-pointer select-none"
+      style={{
+        WebkitTouchCallout: 'none',
+        WebkitUserSelect: 'none',
+        touchAction: 'manipulation',
+      }}
       onMouseDown={handleStart}
       onMouseUp={handleEnd}
       onMouseLeave={handleCancel}
       onTouchStart={handleStart}
       onTouchEnd={handleEnd}
       onTouchCancel={handleCancel}
+      onContextMenu={handleContextMenu}
     >
       <div
         className={cn(
