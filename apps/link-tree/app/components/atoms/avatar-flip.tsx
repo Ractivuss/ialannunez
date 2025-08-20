@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 
 import { cn } from '../../utils/tailwind.utils';
-import { timeoutCallback } from '@/utils/timeout';
 
 type AvatarFlipProps = {
   frontAvatarSrc: string;
@@ -17,17 +16,34 @@ export const AvatarFlip = ({
 }: AvatarFlipProps) => {
   const [isFlipped, setIsFlipped] = React.useState(false);
 
-  const handleClick = () => {
+  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
+    if (isFlipped) return; // Prevent flipping if animation is already in progress
+    e.preventDefault(); // Prevent default touch behaviors
     setIsFlipped(true);
-    timeoutCallback(() => {
+  };
+
+  const handleEnd = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isFlipped) return; // Prevent flipping if animation is already in progress
+    e.preventDefault();
+    setIsFlipped(false);
+  };
+
+  const handleCancel = () => {
+    // Handle touch cancellation (when user drags away)
+    if (isFlipped) {
       setIsFlipped(false);
-    }, 700);
+    }
   };
 
   return (
     <div
       className="perspective w-28 h-28 hover:cursor-pointer"
-      onClick={handleClick}
+      onMouseDown={handleStart}
+      onMouseUp={handleEnd}
+      onMouseLeave={handleCancel}
+      onTouchStart={handleStart}
+      onTouchEnd={handleEnd}
+      onTouchCancel={handleCancel}
     >
       <div
         className={cn(
