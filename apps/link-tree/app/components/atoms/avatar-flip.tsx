@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-
-import { cn } from '../../utils/tailwind.utils';
+import { cn } from '@/utils/tailwind.utils';
+import { timeoutCallback } from '@/utils/timeout';
 
 type AvatarFlipProps = {
   frontAvatarSrc: string;
@@ -14,29 +14,38 @@ export const AvatarFlip = ({
   backAvatarSrc,
   avatarFallback,
 }: AvatarFlipProps) => {
-  const [isFlipped, setIsFlipped] = React.useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
 
-  const handleStart = () => {
-    if (isFlipped) return; // Prevent flipping if animation is already in progress
+  const handleClick = () => {
+    if (isFlipped) return;
     setIsFlipped(true);
-  };
-
-  const handleEnd = () => {
-    if (!isFlipped) return; // Prevent flipping if animation is already in progress
-    setIsFlipped(false);
-  };
-
-  const handleCancel = () => {
-    // Handle touch cancellation (when user drags away)
-    if (isFlipped) {
+    timeoutCallback(() => {
       setIsFlipped(false);
-    }
+    }, 500);
   };
 
-  const handleContextMenu = (e: React.MouseEvent) => {
-    // Prevent context menu (right-click menu on desktop, long-press menu on mobile)
-    e.preventDefault();
-  };
+  // * Allows the avatar to be flipped and held if touch is held down
+  // const handleStart = () => {
+  //   if (isFlipped) return; // Prevent flipping if animation is already in progress
+  //   setIsFlipped(true);
+  // };
+
+  // const handleEnd = () => {
+  //   if (!isFlipped) return; // Prevent flipping if animation is already in progress
+  //   setIsFlipped(false);
+  // };
+
+  // const handleCancel = () => {
+  //   // Handle touch cancellation (when user drags away)
+  //   if (isFlipped) {
+  //     setIsFlipped(false);
+  //   }
+  // };
+
+  // const handleContextMenu = (e: React.MouseEvent) => {
+  //   // Prevent context menu (right-click menu on desktop, long-press menu on mobile)
+  //   e.preventDefault();
+  // };
 
   return (
     <div
@@ -46,13 +55,14 @@ export const AvatarFlip = ({
         WebkitUserSelect: 'none',
         touchAction: 'manipulation',
       }}
-      onMouseDown={handleStart}
-      onMouseUp={handleEnd}
-      onMouseLeave={handleCancel}
-      onTouchStart={handleStart}
-      onTouchEnd={handleEnd}
-      onTouchCancel={handleCancel}
-      onContextMenu={handleContextMenu}
+      onClick={handleClick}
+      // onMouseDown={handleStart}
+      // onMouseUp={handleEnd}
+      // onMouseLeave={handleCancel}
+      // onTouchStart={handleStart}
+      // onTouchEnd={handleEnd}
+      // onTouchCancel={handleCancel}
+      // onContextMenu={handleContextMenu}
     >
       <div
         className={cn(
