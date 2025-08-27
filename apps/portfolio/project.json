@@ -1,0 +1,24 @@
+{
+  "name": "@ialannunez/portfolio",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/portfolio",
+  "projectType": "application",
+  "tags": ["type:app", "framework:remix"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "remix vite:dev --port 3000",
+        "cwd": "apps/portfolio"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "remix vite:build",
+        "cwd": "apps/portfolio"
+      },
+      "outputs": ["{projectRoot}/build"]
+    }
+  }
+}

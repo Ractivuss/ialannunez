@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+@theme {
+  --animate-typewriter-infinite: typewriter-infinite 5s steps(17, end) infinite,
+    blink-cursor 0.75s step-end infinite;
+  --animate-typewriter-second-infinite: typewriter-second-infinite 5s
+      steps(18, end) infinite,
+    blink-cursor 0.75s step-end infinite;
+}
+
+/* Infinite typewriter cycle for first text */
+@keyframes typewriter-infinite {
+  0% {
+    width: 0;
+    display: block;
+  }
+  21.4% {
+    width: 8ch;
+    display: block;
+  } /* 1.5s of 7s */
+  28.6% {
+    width: 8ch;
+    display: block;
+  } /* pause until 2s */
+  50% {
+    width: 0;
+    display: none;
+  } /* delete until 3.5s */
+  100% {
+    width: 0;
+    display: none;
+  }
+}
+
+/* Infinite typewriter cycle for second text */
+@keyframes typewriter-second-infinite {
+  0% {
+    width: 0;
+    display: none;
+    border-right: 0;
+  }
+  49.9% {
+    width: 0;
+    display: none;
+    border-right: 0;
+  }
+  50% {
+    width: 0;
+    display: block;
+    border-right: 2px solid var(--color-primary);
+  } /* show at 3.5s */
+  71.4% {
+    width: 8ch;
+    display: block;
+    border-right: 2px solid var(--color-primary);
+  } /* type until 5s */
+  78.6% {
+    width: 8ch;
+    display: block;
+    border-right: 2px solid var(--color-primary);
+  } /* pause until 5.5s */
+  99.9% {
+    width: 0;
+    display: block;
+    border-right: 2px solid var(--color-primary);
+  }
+  100% {
+    width: 0;
+    display: none;
+    border-right: 0;
+  } /* delete and hide */
+}
+
+/* Blinking cursor */
+@keyframes blink-cursor {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--color-primary);
+  }
+}
