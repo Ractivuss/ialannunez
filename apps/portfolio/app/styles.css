@@ -4,4 +4,15 @@
   --color-primary: #f75023;
   --color-green: #1cbe59;
   --color-purple: #8067f0;
+  --color-react: #61dafb;
+  --color-typescript: #3178c6;
+  --color-footer-background: #3f4453;
+  --color-gray: #7a7a7a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #2b2d33;
+  }
 }
