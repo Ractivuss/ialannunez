@@ -6,7 +6,11 @@ import './styles.css';
 import { SiNextdotjs, SiTypescript } from 'react-icons/si';
 import { IoLogoJavascript } from 'react-icons/io';
 import { useScrollSubscription } from '~/app/rxjs/subscriptions/useScroll.subscription';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
+import {
+  scrollSubject$,
+  ScrollToIdTypes,
+} from '~/app/rxjs/subjects/scroll.subject';
 
 export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -18,6 +22,10 @@ export const Hero = () => {
       });
     }
   });
+
+  const handleScrollTo = useCallback((id: ScrollToIdTypes) => {
+    scrollSubject$.next({ id });
+  }, []);
 
   return (
     <section
@@ -73,7 +81,10 @@ export const Hero = () => {
               'md:justify-start'
             )}
           >
-            <Button className="rounded-full cursor-pointer p-6">
+            <Button
+              className="rounded-full cursor-pointer p-6"
+              onClick={() => handleScrollTo('experience')}
+            >
               My Experience
             </Button>
             <div className="flex items-center justify-between gap-4">
