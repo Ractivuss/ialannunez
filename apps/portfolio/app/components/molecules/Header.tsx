@@ -1,4 +1,3 @@
-import { Menu } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { useEventListener } from '~/app/hooks/useEventListener';
 import {
@@ -6,6 +5,7 @@ import {
   ScrollToIdTypes,
 } from '~/app/rxjs/subjects/scroll.subject';
 import { cn } from '~/app/utils/cn';
+import { DrawerMenu } from './DrawerMenu';
 
 export const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -26,7 +26,7 @@ export const Header = () => {
         hasScrolled ? 'bg-white/5 backdrop-blur-sm shadow-lg' : 'bg-transparent'
       )}
     >
-      <div className="flex md:justify-between md:justify-between justify-around items-center py-8 md:px-30 text-white">
+      <div className="flex md:justify-between justify-around items-center py-8 md:px-30 text-white">
         <h1 className="text-2xl md:text-4xl font-bold hover:text-primary transition-colors duration-300">
           <button
             onClick={() => handleScrollTo('home')}
@@ -49,7 +49,7 @@ export const Header = () => {
             Recommendations
           </button>
         </nav>
-        <Menu className="flex md:hidden" />
+        <DrawerMenu onMenuClick={handleScrollTo} />
       </div>
     </header>
   );
