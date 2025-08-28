@@ -10,7 +10,7 @@ import styles from './styles.css?url';
 
 export const meta: MetaFunction = () => [
   {
-    title: 'New Remix App',
+    title: 'Alan Nunez | Portfolio',
   },
 ];
 
