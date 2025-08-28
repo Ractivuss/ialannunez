@@ -36,5 +36,6 @@ export const useGetProfile = () => {
     initialData: staticProfile,
     staleTime: Infinity, // Static data never changes
     gcTime: Infinity, // Keep in cache indefinitely
+    refetchOnWindowFocus: true,
   });
 };
