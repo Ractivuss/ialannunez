@@ -34,8 +34,6 @@ export const useGetProfile = () => {
     queryKey: ['profile'],
     queryFn: getStaticProfile,
     initialData: staticProfile,
-    staleTime: Infinity, // Static data never changes
-    gcTime: Infinity, // Keep in cache indefinitely
     refetchOnWindowFocus: true,
   });
 };
