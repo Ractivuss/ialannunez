@@ -1,0 +1,19 @@
+name = "portfolio"
+main = "cloudflare/worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Use ASSETS binding for static files
+[assets]
+binding = "ASSETS"
+directory = "build/client"
+
+[[routes]]
+pattern = "portfolio.ialannunez.mx"
+zone_name = "ialannunez.mx"
+
+[env.development]
+name = "portfolio-development"
+[[env.development.routes]]
+pattern = "portfolio-dev.ialannunez.mx"
+zone_name = "ialannunez.mx"
