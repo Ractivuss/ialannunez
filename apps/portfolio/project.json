@@ -19,6 +19,39 @@
         "cwd": "apps/portfolio"
       },
       "outputs": ["{projectRoot}/build"]
+    },
+    "build:cloudflare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node cloudflare/build-cloudflare.js", "remix vite:build"],
+        "cwd": "apps/portfolio",
+        "parallel": false
+      },
+      "outputs": ["{projectRoot}/build"]
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler deploy",
+        "cwd": "apps/portfolio"
+      },
+      "dependsOn": ["build:cloudflare"]
+    },
+    "upload:version:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler versions upload --env development",
+        "cwd": "apps/portfolio"
+      },
+      "dependsOn": ["build:cloudflare"]
+    },
+    "deploy:version:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler versions deploy --env development --yes",
+        "cwd": "apps/portfolio"
+      },
+      "dependsOn": ["build:cloudflare"]
     }
   }
 }
