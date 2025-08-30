@@ -5,10 +5,24 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
-import type { MetaFunction, LinksFunction } from '@remix-run/node';
+import type {
+  MetaFunction,
+  LinksFunction,
+  LoaderFunctionArgs,
+} from '@remix-run/node';
 import styles from './styles.css?url';
 
-export const meta: MetaFunction = () => [
+// Loader to provide server-side data
+export const loader = async (_: LoaderFunctionArgs) => {
+  // Get the base URL from environment variable or fallback
+  const baseUrl = process.env.BASE_URL || 'https://portfolio.ialannunez.mx';
+
+  return {
+    baseUrl,
+  };
+};
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => [
   {
     title: 'Alan Nunez | Portfolio',
     description: "Alan Nunez's Portfolio Website",
@@ -28,7 +42,7 @@ export const meta: MetaFunction = () => [
   },
   {
     property: 'og:image',
-    content: 'https://portfolio.ialannunez.mx/images/hero-preview.webp',
+    content: `${data?.baseUrl}/images/hero-preview.webp`,
   },
   {
     property: 'og:image:width',
@@ -40,7 +54,7 @@ export const meta: MetaFunction = () => [
   },
   {
     property: 'og:url',
-    content: 'https://portfolio.ialannunez.mx',
+    content: data?.baseUrl,
   },
   // Twitter Card
   {
@@ -57,7 +71,7 @@ export const meta: MetaFunction = () => [
   },
   {
     name: 'twitter:image',
-    content: 'https://portfolio.ialannunez.mx/images/hero-preview.webp',
+    content: `${data?.baseUrl}/images/hero-preview.webp`,
   },
   // Additional meta tags
   {
@@ -70,15 +84,15 @@ export const meta: MetaFunction = () => [
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Alan Nunez',
-      url: 'https://portfolio.ialannunez.mx',
-      image: 'https://portfolio.ialannunez.mx/images/hero-preview.webp',
+      url: data?.baseUrl,
+      image: `${data?.baseUrl}/images/hero-preview.webp`,
       description:
         "Alan Nunez's Portfolio Website - Software Engineer and Software Architect",
       jobTitle: 'Software Engineer',
       worksFor: {
         '@type': 'Organization',
         name: 'Freelance',
-        url: 'https://portfolio.ialannunez.mx',
+        url: data?.baseUrl,
       },
       knowsAbout: [
         'Software Engineering',
