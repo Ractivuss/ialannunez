@@ -86,7 +86,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
       '@type': 'Person',
       name: 'Alan Nunez',
       url: data?.baseUrl,
-      image: `/images/hero-preview.webp`,
+      image: `${data?.baseUrl}/images/hero-preview.webp`,
       description:
         "Alan Nunez's Portfolio Website - Software Engineer and Software Architect",
       jobTitle: 'Software Engineer',
