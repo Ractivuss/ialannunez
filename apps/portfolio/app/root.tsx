@@ -11,6 +11,22 @@ import styles from './styles.css?url';
 export const meta: MetaFunction = () => [
   {
     title: 'Alan Nunez | Portfolio',
+    description: "Alan Nunez's Portfolio Website",
+    image: '/images/hero-background.jpg',
+    tags: [
+      'Portfolio',
+      'Website',
+      'Alan Nunez',
+      'Software Engineer',
+      'Software Architect',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'Playwright',
+      'Cypress',
+      'Jest',
+    ],
   },
 ];
 
