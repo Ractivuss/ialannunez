@@ -12,21 +12,96 @@ export const meta: MetaFunction = () => [
   {
     title: 'Alan Nunez | Portfolio',
     description: "Alan Nunez's Portfolio Website",
-    image: '/images/hero-preview.webp',
-    tags: [
-      'Portfolio',
-      'Website',
-      'Alan Nunez',
-      'Software Engineer',
-      'Software Architect',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Tailwind CSS',
-      'Playwright',
-      'Cypress',
-      'Jest',
-    ],
+  },
+  // Open Graph / Facebook
+  {
+    property: 'og:type',
+    content: 'website',
+  },
+  {
+    property: 'og:title',
+    content: 'Alan Nunez | Portfolio',
+  },
+  {
+    property: 'og:description',
+    content: "Alan Nunez's Portfolio Website",
+  },
+  {
+    property: 'og:image',
+    content: 'https://portfolio.ialannunez.mx/images/hero-preview.webp',
+  },
+  {
+    property: 'og:image:width',
+    content: '1200',
+  },
+  {
+    property: 'og:image:height',
+    content: '630',
+  },
+  {
+    property: 'og:url',
+    content: 'https://portfolio.ialannunez.mx',
+  },
+  // Twitter Card
+  {
+    name: 'twitter:card',
+    content: 'summary_large_image',
+  },
+  {
+    name: 'twitter:title',
+    content: 'Alan Nunez | Portfolio',
+  },
+  {
+    name: 'twitter:description',
+    content: "Alan Nunez's Portfolio Website",
+  },
+  {
+    name: 'twitter:image',
+    content: 'https://portfolio.ialannunez.mx/images/hero-preview.webp',
+  },
+  // Additional meta tags
+  {
+    name: 'keywords',
+    content:
+      'Portfolio, Website, Alan Nunez, Alan Núñez, Full Stack Developer, Senior Software Engineer, Software Engineer, Software Architect, React, Next.js, TypeScript, Tailwind CSS, Playwright, Cypress, Jest, Prisma, Node.js, Express, MongoDB, PostgreSQL, Docker',
+  },
+  {
+    'script:ld+json': {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Alan Nunez',
+      url: 'https://portfolio.ialannunez.mx',
+      image: 'https://portfolio.ialannunez.mx/images/hero-preview.webp',
+      description:
+        "Alan Nunez's Portfolio Website - Software Engineer and Software Architect",
+      jobTitle: 'Software Engineer',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Freelance',
+        url: 'https://portfolio.ialannunez.mx',
+      },
+      knowsAbout: [
+        'Software Engineering',
+        'Software Architecture',
+        'React',
+        'Next.js',
+        'TypeScript',
+        'Tailwind CSS',
+        'Playwright',
+        'Cypress',
+        'Jest',
+        'Prisma',
+        'Node.js',
+        'Express',
+        'MongoDB',
+        'PostgreSQL',
+        'Docker',
+      ],
+      sameAs: [
+        'https://github.com/Ractivuss',
+        'https://www.linkedin.com/in/ayng-98/',
+      ],
+    },
   },
 ];
 
