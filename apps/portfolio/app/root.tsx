@@ -13,6 +13,7 @@ import type {
 import styles from './styles.css?url';
 
 // Loader to provide server-side data
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const loader = async (_: LoaderFunctionArgs) => {
   // Get the base URL from environment variable or fallback
   const baseUrl = process.env.BASE_URL || 'https://portfolio.ialannunez.mx';
@@ -42,7 +43,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
   },
   {
     property: 'og:image',
-    content: `${data?.baseUrl}/images/hero-preview.webp`,
+    content: `/images/hero-preview.webp`,
   },
   {
     property: 'og:image:width',
@@ -71,7 +72,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
   },
   {
     name: 'twitter:image',
-    content: `${data?.baseUrl}/images/hero-preview.webp`,
+    content: `/images/hero-preview.webp`,
   },
   // Additional meta tags
   {
@@ -85,7 +86,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
       '@type': 'Person',
       name: 'Alan Nunez',
       url: data?.baseUrl,
-      image: `${data?.baseUrl}/images/hero-preview.webp`,
+      image: `/images/hero-preview.webp`,
       description:
         "Alan Nunez's Portfolio Website - Software Engineer and Software Architect",
       jobTitle: 'Software Engineer',
