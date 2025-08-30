@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => [
   {
     title: 'Alan Nunez | Portfolio',
     description: "Alan Nunez's Portfolio Website",
-    image: '/images/hero-background.jpg',
+    image: '/images/hero-preview.webp',
     tags: [
       'Portfolio',
       'Website',
