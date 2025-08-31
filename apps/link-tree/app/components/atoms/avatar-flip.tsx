@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { cn } from '@/utils/tailwind.utils';
 import { timeoutCallback } from '@/utils/timeout';
+import { Skeleton } from './skeleton';
 
 type AvatarFlipProps = {
   frontAvatarSrc: string;
@@ -12,7 +13,6 @@ type AvatarFlipProps = {
 export const AvatarFlip = ({
   frontAvatarSrc,
   backAvatarSrc,
-  avatarFallback,
 }: AvatarFlipProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -75,8 +75,12 @@ export const AvatarFlip = ({
           <AvatarImage
             className="aspect-square rounded-full"
             src={frontAvatarSrc}
+            alt="Front avatar"
+            loading="lazy"
           />
-          <AvatarFallback>{avatarFallback}</AvatarFallback>
+          <AvatarFallback>
+            <Skeleton className="aspect-square rounded-full" />
+          </AvatarFallback>
         </Avatar>
 
         {/* Back side */}
@@ -84,8 +88,12 @@ export const AvatarFlip = ({
           <AvatarImage
             className="aspect-square rounded-full"
             src={backAvatarSrc}
+            alt="Back avatar"
+            loading="lazy"
           />
-          <AvatarFallback>{avatarFallback}</AvatarFallback>
+          <AvatarFallback>
+            <Skeleton className="aspect-square rounded-full" />
+          </AvatarFallback>
         </Avatar>
       </div>
     </div>

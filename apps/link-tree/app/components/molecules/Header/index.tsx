@@ -1,3 +1,4 @@
+import { useTheme } from '@/providers/ThemeProvider';
 import { Button } from '@atoms/button';
 import { Edit2, Save } from 'lucide-react';
 
@@ -12,6 +13,8 @@ export const Header = ({
   onToggleEditMode,
   onSaveChanges,
 }: HeaderProps) => {
+  const { isHydrated } = useTheme();
+
   const handleClick = () => {
     // if in edit mode, save changes and toggle edit mode
     if (isEditMode) onSaveChanges();
@@ -25,6 +28,7 @@ export const Header = ({
         size="icon"
         onClick={handleClick}
         aria-label={isEditMode ? 'Save changes' : 'Edit profile and links'}
+        disabled={!isHydrated}
       >
         {isEditMode ? (
           <Save className="h-4 w-4" />

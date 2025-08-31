@@ -29,6 +29,7 @@ const staticProfile: Profile = {
 
 const getStaticProfile = (): Profile => staticProfile;
 
+// Just wanted to use React Query for practice and fun
 export const useGetProfile = () => {
   return useQuery({
     queryKey: ['profile'],
